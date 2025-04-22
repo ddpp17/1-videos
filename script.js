@@ -1,3 +1,7 @@
+const itemInput = document.getElementById("itemInput");
+const addBtn = document.getElementById("addBtn");
+const itemList = document.getElementById("itemList");
+
 let items = JSON.parse(localStorage.getItem("items")) || [];
 
 function saveItems() {
@@ -5,90 +9,67 @@ function saveItems() {
 }
 
 function renderItems() {
-  const itemList = document.getElementById("itemList");
   itemList.innerHTML = "";
-
   items.forEach((item, index) => {
     const li = document.createElement("li");
 
-    const span = document.createElement("span");
-    span.className = "item-name";
-    span.textContent = item.name;
+    const nameSpan = document.createElement("span");
+    nameSpan.className = "item-name";
+    nameSpan.textContent = item.name;
 
-    const inputExtra = document.createElement("input");
-    inputExtra.className = "item-extra";
-    inputExtra.value = item.extra || "";
-    inputExtra.addEventListener("input", () => {
-      items[index].extra = inputExtra.value;
+    const extraInput = document.createElement("input");
+    extraInput.className = "item-extra";
+    extraInput.type = "text";
+    extraInput.value = item.extra;
+    extraInput.addEventListener("input", () => {
+      items[index].extra = extraInput.value;
       saveItems();
     });
 
     const editBtn = document.createElement("button");
     editBtn.className = "edit-btn";
     editBtn.textContent = "Editar";
-    editBtn.onclick = () => {
-      const newName = prompt("Editar nombre:", item.name);
-      if (newName) {
-        const trimmed = newName.trim();
-        const nameExists = items.some((it, i) =>
-          i !== index && it.name.toLowerCase() === trimmed.toLowerCase()
-        );
-        if (!trimmed) {
-          alert("El nombre no puede estar vacío.");
-        } else if (nameExists) {
-          alert("Este nombre ya existe.");
-        } else {
-          items[index].name = trimmed;
-          saveItems();
-          renderItems();
-        }
+    editBtn.addEventListener("click", () => {
+      const newName = prompt("Editar nombre del ítem:", item.name);
+      if (newName !== null && newName.trim() !== "") {
+        items[index].name = newName.trim();
+        saveItems();
+        renderItems();
       }
-    };
+    });
 
     const deleteBtn = document.createElement("button");
     deleteBtn.className = "delete-btn";
     deleteBtn.textContent = "Eliminar";
-    deleteBtn.onclick = () => {
+    deleteBtn.addEventListener("click", () => {
       items.splice(index, 1);
       saveItems();
       renderItems();
-    };
+    });
 
-    li.appendChild(span);
-    li.appendChild(inputExtra);
+    li.appendChild(nameSpan);
+    li.appendChild(extraInput);
     li.appendChild(editBtn);
     li.appendChild(deleteBtn);
     itemList.appendChild(li);
   });
 }
 
-function addItem() {
-  const input = document.getElementById("itemInput");
-  const value = input.value.trim();
-
-  if (!value) {
-    alert("Por favor escribe un ítem válido.");
-    return;
-  }
-
-  const exists = items.some(item => item.name.toLowerCase() === value.toLowerCase());
-  if (exists) {
-    alert("Este ítem ya existe.");
-    return;
-  }
-
-  items.push({ name: value, extra: "" });
-  input.value = "";
-  saveItems();
-  renderItems();
-}
-
-document.getElementById("addBtn").addEventListener("click", addItem);
-document.getElementById("itemInput").addEventListener("keypress", function (e) {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    addItem();
+addBtn.addEventListener("click", () => {
+  const name = itemInput.value.trim();
+  if (name !== "") {
+    items.push({ name, extra: "" });
+    itemInput.value = "";
+    saveItems();
+    renderItems();
   }
 });
 
-window.onload = renderItems;
+// Agregar con Enter
+itemInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    addBtn.click();
+  }
+});
+
+renderItems();
