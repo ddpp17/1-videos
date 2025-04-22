@@ -21,9 +21,19 @@ function renderItems() {
     extraInput.className = "item-extra";
     extraInput.type = "text";
     extraInput.value = item.extra;
+    extraInput.placeholder = "Dato extra";
+
     extraInput.addEventListener("input", () => {
       items[index].extra = extraInput.value;
       saveItems();
+    });
+
+    // Presionar Enter en input extra agrega y enfoca al input principal
+    extraInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        extraInput.blur(); // guardar el cambio
+        itemInput.focus(); // volver al input principal
+      }
     });
 
     const editBtn = document.createElement("button");
