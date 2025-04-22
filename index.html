@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista Interactiva</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+      <h2>Lista Interactiva</h2>
+      <div class="input-container">
+        <input type="text" id="itemInput" placeholder="Escribe un nuevo ítem">
+        <button id="addBtn">Agregar</button>
+      </div>
+      <ul id="itemList"></ul>
+    </div>
+  
+    <script src="script.js"></script>
+  </body>
+  
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista Interactiva</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    .input-container {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    #itemInput {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    #addBtn {
+      padding: 10px 15px;
+      margin-left: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .item-name {
+      flex: 1;
+    }
+
+    .item-extra {
+      width: 150px;
+      margin: 0 10px;
+      padding: 5px;
+    }
+
+    .edit-btn, .delete-btn {
+      margin-left: 5px;
+      padding: 5px 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .edit-btn {
+      background-color: #ffc107;
+      color: #333;
+    }
+
+    .delete-btn {
+      background-color: #dc3545;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h2>Lista Interactiva</h2>
+  <div class="input-container">
+    <input type="text" id="itemInput" placeholder="Escribe un nuevo ítem">
+    <button id="addBtn">Agregar</button>
+  </div>
+  <ul id="itemList"></ul>
+
+  <script>
+    let items = JSON.parse(localStorage.getItem("items")) || [];
+
+    function saveItems() {
+      localStorage.setItem("items", JSON.stringify(items));
+    }
+
+    function renderItems() {
+      const itemList = document.getElementById("itemList");
+      itemList.innerHTML = "";
+
+      items.forEach((item, index) => {
+        const li = document.createElement("li");
+
+        const span = document.createElement("span");
+        span.className = "item-name";
+        span.textContent = item.name;
+
+        const inputExtra = document.createElement("input");
+        inputExtra.className = "item-extra";
+        inputExtra.value = item.extra || "";
+        inputExtra.addEventListener("input", () => {
+          items[index].extra = inputExtra.value;
+          saveItems();
+        });
+
+        const editBtn = document.createElement("button");
+        editBtn.className = "edit-btn";
+        editBtn.textContent = "Editar";
+        editBtn.onclick = () => {
+          const newName = prompt("Editar nombre:", item.name);
+          if (newName) {
+            items[index].name = newName;
+            saveItems();
+            renderItems();
+          }
+        };
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.className = "delete-btn";
+        deleteBtn.textContent = "Eliminar";
+        deleteBtn.onclick = () => {
+          items.splice(index, 1);
+          saveItems();
+          renderItems();
+        };
+
+        li.appendChild(span);
+        li.appendChild(inputExtra);
+        li.appendChild(editBtn);
+        li.appendChild(deleteBtn);
+        itemList.appendChild(li);
+      });
+    }
+
+    document.getElementById("addBtn").addEventListener("click", () => {
+      const input = document.getElementById("itemInput");
+      const value = input.value.trim();
+      if (value) {
+        items.push({ name: value, extra: "" });
+        input.value = "";
+        saveItems();
+        renderItems();
+      }
+    });
+
+    window.onload = renderItems;
+  </script>
+</body>
+</html> -->
