@@ -1,122 +1,123 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    padding: 20px;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .container {
-    width: 66%;
-    max-width: 500px;
-  }
-  
-  h2 {
-    color: #333;
-    text-align: center;
-  }
-  
-  .input-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
-    justify-content: center;
-  }
-  
-  #itemInput {
-    flex: 1 1 150px;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+}
+
+h2 {
+  color: #333;
+  text-align: center;
+}
+
+.input-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+#itemInput {
+  flex: 1 1 150px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+#addBtn {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+  width: 100%;
+}
+
+li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  gap: 10px;
+}
+
+.item-name {
+  flex: 1 1 100px;
+  font-size: 16px;
+}
+
+.item-extra {
+  flex: 1 1 120px;
+  padding: 5px;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.edit-btn {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* 📱 100% del ancho en celulares */
+@media (max-width: 600px) {
+  body {
     padding: 10px;
-    font-size: 16px;
-    max-width: 250px;
   }
-  
-  #addBtn {
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0 auto;
+
+  .container {
     width: 100%;
   }
-  
+
+  .input-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #itemInput,
+  #addBtn {
+    width: 100%;
+  }
+
   li {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    background-color: white;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .item-name {
-    flex: 1 1 100px;
-    font-size: 16px;
-  }
-  
-  .item-extra {
-    flex: 1 1 120px;
-    padding: 5px;
-  }
-  
+
+  .item-name,
+  .item-extra,
   .edit-btn,
   .delete-btn {
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 3px;
-    font-size: 14px;
+    width: 100%;
+    margin-top: 5px;
   }
-  
-  .edit-btn {
-    background-color: #ffc107;
-    color: #333;
-  }
-  
-  .delete-btn {
-    background-color: #dc3545;
-    color: white;
-  }
-  
-  /* 🔽 Responsivo para iPhone 11 y pantallas pequeñas */
-  @media (max-width: 450px) {
-    .container {
-      width: 100%;
-      padding: 10px;
-    }
-  
-    .input-container {
-      flex-direction: column;
-      align-items: stretch;
-    }
-  
-    #itemInput,
-    #addBtn {
-      width: 100%;
-    }
-  
-    li {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .item-name,
-    .item-extra,
-    .edit-btn,
-    .delete-btn {
-      width: 100%;
-      margin-top: 5px;
-    }
-  }
-  
+}
