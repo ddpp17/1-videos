@@ -8,8 +8,9 @@ function saveItems() {
   localStorage.setItem("items", JSON.stringify(items));
 }
 
-function renderItems() {
+function renderItems(focusLast = false) {
   itemList.innerHTML = "";
+
   items.forEach((item, index) => {
     const li = document.createElement("li");
 
@@ -28,11 +29,10 @@ function renderItems() {
       saveItems();
     });
 
-    // Presionar Enter en input extra agrega y enfoca al input principal
     extraInput.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
-        extraInput.blur(); // guardar el cambio
-        itemInput.focus(); // volver al input principal
+        extraInput.blur();
+        itemInput.focus();
       }
     });
 
@@ -63,6 +63,14 @@ function renderItems() {
     li.appendChild(deleteBtn);
     itemList.appendChild(li);
   });
+
+  if (focusLast && items.length > 0) {
+    // Enfocar el input extra del último ítem
+    const lastExtra = itemList.querySelectorAll(".item-extra");
+    if (lastExtra.length > 0) {
+      lastExtra[lastExtra.length - 1].focus();
+    }
+  }
 }
 
 addBtn.addEventListener("click", () => {
@@ -71,14 +79,13 @@ addBtn.addEventListener("click", () => {
     items.push({ name, extra: "" });
     itemInput.value = "";
     saveItems();
-    renderItems();
+    renderItems(true); // enfocar input extra
   }
 });
 
-// Agregar con Enter
 itemInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
-    addBtn.click();
+    addBtn.click(); // esto ya enfoca el input extra
   }
 });
 
