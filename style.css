@@ -1,95 +1,119 @@
+/* Estilos generales */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
   margin: 0;
   padding: 20px;
-  display: flex;
-  justify-content: center;
+  background-color: #f2f2f2;
 }
 
 .container {
-  width: 100%;
   max-width: 600px;
+  margin: 0 auto;
+  background: #b7bede;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-  color: #333;
+h1 {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .input-container {
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 20px;
-  justify-content: center;
+  flex-direction: row;
 }
 
 #itemInput {
-  flex: 1 1 150px;
-  padding: 10px;
+  flex: 1;
+  padding: 6px 10px;
   font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: none;
 }
 
 #addBtn {
-  padding: 10px 15px;
+  padding: 6px 12px;
+  font-size: 16px;
   background-color: #007bff;
   color: white;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
+  white-space: nowrap;
+}
+
+#addBtn:hover {
+  background-color: #0056b3;
 }
 
 ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
-  margin: 0 auto;
-  width: 100%;
+  margin: 0;
 }
 
 li {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  background-color: white;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #ccc;
   padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  gap: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  gap: 8px;
 }
 
 .item-name {
-  flex: 1 1 100px;
+  font-weight: bold;
+  margin-bottom: 4px;
   font-size: 16px;
 }
 
 .item-extra {
-  flex: 1 1 120px;
-  padding: 6px;
-  font-size: 16px;
-}
-
-.edit-btn,
-.delete-btn {
-  padding: 6px 10px;
-  border: none;
-  cursor: pointer;
-  border-radius: 3px;
-  font-size: 14px;
+  padding: 6px 8px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  margin-top: 4px;
 }
 
 .edit-btn {
   background-color: #ffc107;
-  color: #333;
+  color: black;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 4px;
 }
 
 .delete-btn {
   background-color: #dc3545;
   color: white;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 4px;
 }
 
-/* 📱 Estilos mejorados para móviles */
+.edit-btn:hover {
+  background-color: #e0a800;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Responsive para iPhone 11 y móviles */
 @media (max-width: 600px) {
   body {
     padding: 12px;
@@ -97,48 +121,49 @@ li {
 
   .container {
     width: 100%;
-    margin: 0 auto;
+    margin: 0 12px;
+    padding: 12px;
   }
 
   .input-container {
     flex-direction: column;
-    align-items: stretch;
-    gap: 4px;
+    gap: 8px;
   }
 
-  #itemInput,
+  #itemInput {
+    font-size: 16px;
+    padding: 4px 8px;
+    margin: 0;
+  }
+
   #addBtn {
     width: 100%;
     font-size: 16px;
-    padding: 4px 6px; /* <--- Reducido */
-  }
-
-  ul {
-    width: 100%;
+    padding: 6px;
+    margin: 0;
   }
 
   li {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 6px;
-    gap: 4px;
+    padding: 8px;
+    gap: 6px;
+    margin: 10px 0;
   }
 
   .item-name {
-    font-size: 15px;
-    width: 100%;
+    font-size: 16px;
   }
 
   .item-extra {
-    width: 100%;
     font-size: 15px;
-    padding: 4px 6px; /* <--- Reducido */
+    padding: 4px 6px;
+    margin: 0;
   }
 
   .edit-btn,
   .delete-btn {
     width: 100%;
-    font-size: 14px;
-    padding: 4px 6px; /* <--- Reducido */
+    font-size: 15px;
+    padding: 5px 6px;
+    margin: 2px 0;
   }
 }
